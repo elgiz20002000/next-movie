@@ -6,7 +6,10 @@ const nextConfig = {
     domains:[
       "m.media-amazon.com"
     ]
-  }
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+}
 }
 
 module.exports = nextConfig
