@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "Store/MenuSlice.js", "Store/store.js", "Store/MovieSlice.js", "Store/MovieSlice.js", "pages/api/sign-up.js"],
+  "exclude": ["node_modules"]
+}

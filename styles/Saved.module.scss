@@ -1,0 +1,42 @@
+.saved {
+    color: white;
+    padding: 50px 36px;
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    h1 {
+        width: 100%;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 52px;
+    }
+    h2 {
+        width: 100%;
+        text-align: center;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 42px;
+    }
+    a {
+        width: 100%;
+        text-align: right;
+    }
+
+    .info {
+        text-align: center;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 31px;
+        color: #8E8E8E;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50% , -50%);
+        img {
+            vertical-align: middle;
+        }
+    }
+}

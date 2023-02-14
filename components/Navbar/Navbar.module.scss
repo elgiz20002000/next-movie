@@ -1,0 +1,83 @@
+@import '../../styles/colors.scss';
+
+.navbar {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #FFFFFF;
+    .current_user {
+        font-size: 20px;
+    }
+    a {
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+    &_title {    
+        font-size: 40px;
+        line-height: 52px;
+    }
+    .input_wrapper {
+        position: relative;
+        &::after {
+            position: absolute;
+            content: url('../../public/icon/Search.svg');
+            top: 50%;
+            transform: translateY(-50%);
+            right: 15px;
+        }
+        input {
+            padding: 0 25px;
+            font-size: 21px;
+            background: #FFFFFF;
+            border: 2px solid #FFFFFF;
+            border-radius: 30px;
+            width: 800px;
+            height: 48px;
+            outline: none;
+            transition: .3s all;
+            &:focus {
+                border: 2px solid $main;
+            }
+        }
+    }
+    .login_btn {
+        transition: .3s all; 
+        cursor: pointer;
+        a {
+            transition: .3s all;
+        }
+        &:hover {
+            transform: scale(1.05);
+            a {
+                color: $main;
+            }
+        }
+    }
+    .login_btn ,  .sign_up_btn {
+        font-size: 23px;
+        line-height: 42px;
+    }
+    .sign_up_btn {
+        cursor: pointer;
+        text-align: center;
+        width: 120px;
+        height: 48px;
+        border: 2px solid #FFFFFF;
+        border-radius: 30px;
+        transition: .3s all;
+        &:hover {
+            transform: scale(1.05);
+            border-color: $main;
+            background: $main;
+        }
+    }
+    .menu_btn {
+        transition: .3s all;
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}

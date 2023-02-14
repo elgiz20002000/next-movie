@@ -1,0 +1,48 @@
+@import '../../styles/colors.scss';
+
+.card {
+    text-decoration: none;
+    margin-top: 150px;
+    cursor: pointer;
+    text-align: center !important;
+    width: 33% !important;
+    
+    img {
+        border-radius: 27.7743px;
+        width: 300.69px;
+        height: 450.99px;
+        object-fit: cover;
+        transition: .3s all;
+    }
+    .title {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 58px;
+        text-align: center;
+        color: #FFFFFF;
+        transition: .3s all;
+    }
+    transition: .3s all;
+    &:hover {
+        img {
+            transform: translateY(-8px);
+        }
+        .title {
+            color: $main ;
+            transform: scale(1.05);
+        }
+    }
+}
+
+.card-animate-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  .card-animate-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .card-animate-exit {
+    opacity: 1;
+  }

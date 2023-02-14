@@ -1,0 +1,153 @@
+@import '../../styles/colors.scss';
+.form_wrapper {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    h2 {
+        font-weight: 600;
+        font-size: 64px;
+        line-height: 83px;
+    }
+    form {
+        display: flex;
+        flex-direction: column; 
+        align-content: flex-end;
+        margin-top: 100px;
+        label {
+            font-weight: 700;
+            font-size: 21px;
+            line-height: 36px;
+            margin-right: 15px;
+        }
+        input:not(input[type=checkbox]) {
+            padding: 0 15px;
+            font-size: 18px;
+            color:white;
+            outline: none;
+            border: 3px solid #FFFFFF;
+            border-radius: 30px;
+            background: transparent;
+            width: 400px;
+            height: 50px;
+            transition: .2s all;
+            &:focus {
+                border: 3px solid $main;
+            }
+        }
+        .password {
+            margin-top: 22px;
+        }
+        .email , .password {
+            text-align: right;
+        }
+        .form_btns {
+            margin-top: 100px;
+            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .remember {
+                display: flex;
+                align-items: center;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 26px;
+                
+            }
+            button {
+                cursor: pointer;
+                border: none;
+                width: 157px;
+                height: 61px;
+                background: #FFFFFF;
+                border-radius: 30px;
+                font-weight: 800;
+                font-size: 28px;
+                line-height: 36px;
+                text-align: center;
+                color: #000000;
+                transition: .2s all;
+                &:hover {
+                    color: white;
+                    background:$main;
+                    transform: scale(1.05);
+                }
+            }
+            .cancel {
+                cursor: pointer;
+                font-weight: 700;
+                font-size: 28px;
+                line-height: 36px;
+                transition: .2s all;
+                a {
+                    color:white;
+                    text-decoration: none;
+                    transition: .2s all;
+
+                }
+                &:hover {
+                    transform: scale(1.05);
+
+                    a {
+                        color: $main;
+                    }
+                }
+            }
+        }
+    }
+    .forget_password {
+        cursor: pointer;
+        color: white;
+        position: absolute;
+        bottom: 15px;
+        transition: .2s all;
+        &:hover {
+            color: $main;
+            transform: scale(1.05);
+        }
+    }
+}
+
+@import '../../styles/colors.scss';
+
+
+// .checkbox {
+//     &.checked {
+//         .custom {
+//             background:$main;
+//         }
+//     }
+//     position: relative;
+//     font-size: 25px;
+//     cursor: pointer;
+//     .custom {
+//         border-radius: 4px;
+//         position: absolute;
+//         left: 0;
+//         top: 50%;
+//         width: 18px;
+//         height: 18px;
+//         background:white;
+//         transform: translateY(-50%);
+//         transition: .3s all;
+//         &::after {
+//             content: "";
+//             position: absolute;
+//             left: 9px;
+//             top: 5px;
+//             width: 5px;
+//             height: 10px;
+//             border: solid white;
+//             border-width: 0 3px 3px 0;
+//             -webkit-transform: rotate(45deg);
+//             -ms-transform: rotate(45deg);
+//             transform: rotate(45deg) translateX(-50%);
+//         }
+//     }
+//     input {
+//         opacity: 0;
+//         position: absolute;
+//     }
+// }

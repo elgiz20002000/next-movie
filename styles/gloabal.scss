@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=K2D:wght@400;600&display=swap");
+@import './colors.scss';
+* {
+  font-family: "K2D", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background: black;
+}
+.custom-modal {
+  background: $main;
+  color: white;
+}
+.card-animate-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.card-animate-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.card-animate-exit {
+  opacity: 1;
+}
+.card-animate-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.loading {
+  div {
+    margin-top: 0;
+  }
+  background: white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(1.05);
+}
+
+.notification {
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 31px;
+  color: #8e8e8e;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a300ff 0.17%, #2c00ff 100%);
+  border-radius: 8px;
+}
+
+.error {
+  text-align: center;
+  display: block;
+  color: red;
+}
+.input_error {
+  border-color: red !important;
+}
