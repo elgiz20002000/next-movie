@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { getMovies } from '../../Store/MovieSlice'
 import { useRouter } from 'next/router'
 import { getSavedMovies } from '../../Store/SaveSlice'
+import { StaticImageData } from 'next/image'
 
 const CardsList = () => {
   const router = useRouter()
@@ -16,15 +17,15 @@ const CardsList = () => {
   
   return <>
         <div className={styles.cards_list}>
-          {router.pathname != '/Saved' ? movies ? movies.map(( {Poster , Title , imdbID})  => {
+          {router.pathname != '/Saved' ? movies ? movies.map(( {Poster , Title , imdbID}:{Poster:StaticImageData | string, Title:string, imdbID:string})  => {
               if(Poster !== 'N/A') {
-                return <Card id={imdbID} key={imdbID} img={Poster} title={Title}/>
+                return <Card id={imdbID} key={imdbID} img={Poster as StaticImageData} title={Title}/>
               } else {
                 return
               }
-            } ) : 'Not Found'  : savedMovies ? savedMovies.map(( {Poster , Title , imdbID})  => {
+            } ) : 'Not Found'  : savedMovies ? savedMovies.map(( {Poster , Title , imdbID}:{Poster:StaticImageData | string, Title:string, imdbID:string})  => {
               if(Poster !== 'N/A') {
-                return <Card id={imdbID} key={imdbID} img={Poster} title={Title}/>
+                return <Card id={imdbID} key={imdbID} img={Poster as StaticImageData} title={Title}/>
               } else {
                 return
               }
