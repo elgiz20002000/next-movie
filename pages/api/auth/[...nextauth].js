@@ -26,6 +26,7 @@ export const authoptions = {
                 client.close()
                 return {name : user.username}
             }
+            ,
         })
     ]
 }

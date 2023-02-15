@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 
 
 
-        res.status(201).json({message:'Saved' , ok:true})
+        res.status(201).json({message:'Saved' , ok:true}) 
         client.close()
     } 
 }
