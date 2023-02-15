@@ -3,12 +3,12 @@ import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const fetchMovies = createAsyncThunk('movie/fetchMovies' , (searchName) => {
-    return axios.get(`http://www.omdbapi.com/?s=${searchName}&apikey=8d9cfe3d`)
+    return axios.get(`https://www.omdbapi.com/?s=${searchName}&apikey=8d9cfe3d`)
     .then(res => res.data.Search)
 })
 
 export const fetchMovie = createAsyncThunk('movie/fetchMovie' , (searchID) => {
-    return axios.get(`http://www.omdbapi.com/?i=${searchID}&apikey=8d9cfe3d`)
+    return axios.get(`https://www.omdbapi.com/?i=${searchID}&apikey=8d9cfe3d`)
     .then(res => res.data)
 })
 
