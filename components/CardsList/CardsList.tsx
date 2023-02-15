@@ -13,7 +13,6 @@ const CardsList = () => {
 
   
 
-  console.log(movies)
   
   return <>
         <div className={styles.cards_list}>
