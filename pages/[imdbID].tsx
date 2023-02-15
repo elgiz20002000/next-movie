@@ -2,7 +2,6 @@ import style from "../styles/Movie.module.scss";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  cleanMovies,
   fetchMovie,
   fetchTrailer,
   getCurrentMovie,
@@ -25,8 +24,8 @@ import {
   addSavedMovie,
   getSavedMovies,
   removeSavedMovie,
-  setSavedMovies,
 } from "../Store/SaveSlice";
+import { addLikedMovie, getLikedMovies, removeLikedMovie } from "../Store/LikedMovie";
 
 const Movie = () => {
   const { data: session, status } = useSession();
@@ -55,6 +54,7 @@ const Movie = () => {
   const [saved, setSaved] = useState<boolean | null>(false);
   const [globalModal, setGlobalModal] = useState(false);
   const savedData = useSelector(getSavedMovies);
+  const likeData = useSelector(getLikedMovies);
   const { query } = router;
 
   const saveHandler = (session: Session, data: object) => {
@@ -70,7 +70,8 @@ const Movie = () => {
   const likeHandler = (
     session: Session,
     router: NextRouter,
-    like: boolean | null
+    like: boolean | null,
+    dislike: boolean | null
   ) => {
     return fetch("/api/like-movie", {
       method: "POST",
@@ -78,15 +79,23 @@ const Movie = () => {
         username: session.user?.name,
         movieID: router.query.imdbID,
         like,
+        dislike,
       }),
     });
   };
+
 
   useEffect(() => {
     if (router.isReady) {
       dispatch(fetchMovie(query.imdbID));
       if (savedData?.find((el) => el.imdbID == query.imdbID)) {
         setSaved(true);
+      }
+
+      let index = likeData?.findIndex((el) => el.movieID == query.imdbID);
+      if (index != -1) {
+        setLike(likeData[index].like);
+        setDislike(likeData[index].dislike);
       }
     }
   }, [router.isReady]);
@@ -165,19 +174,36 @@ const Movie = () => {
                       onClick={() => {
                         if (session?.user) {
                           if (like) {
-                            setLike(false);
                             setGlobalModal(true);
-                            likeHandler(session, router, false).then(() => {
-                              setGlobalModal(false);
-                            });
+                            likeHandler(session, router, false, dislike).then(
+                              () => {
+                                setLike(false);
+                                setGlobalModal(false);
+                                dispatch(
+                                  addLikedMovie({
+                                    movieID: imdbID,
+                                    like: false,
+                                    dislike,
+                                  })
+                                );
+                              }
+                            );
                           } else {
-                            setLike(true);
-                            setDislike(false);
-
                             setGlobalModal(true);
-                            likeHandler(session, router, true).then(() => {
-                              setGlobalModal(false);
-                            });
+                            likeHandler(session, router, true, false).then(
+                              () => {
+                                setLike(true);
+                                setDislike(false);
+                                setGlobalModal(false);
+                                dispatch(
+                                  addLikedMovie({
+                                    movieID: imdbID,
+                                    like: true,
+                                    dislike: false,
+                                  })
+                                );
+                              }
+                            );
                           }
                         } else {
                           dispatch(showModal());
@@ -194,18 +220,36 @@ const Movie = () => {
                       onClick={() => {
                         if (session?.user) {
                           if (dislike) {
-                            setDislike(false);
                             setGlobalModal(true);
-                            likeHandler(session, router, like).then(() => {
-                              setGlobalModal(false);
-                            });
+                            likeHandler(session, router, like, false).then(
+                              () => {
+                                setDislike(false);
+                                setGlobalModal(false);
+                                dispatch(
+                                  addLikedMovie({
+                                    movieID: imdbID,
+                                    like,
+                                    dislike: false,
+                                  })
+                                );
+                              }
+                            );
                           } else {
-                            setLike(false);
-                            setDislike(true);
                             setGlobalModal(true);
-                            likeHandler(session, router, false).then(() => {
-                              setGlobalModal(false);
-                            });
+                            likeHandler(session, router, false, true).then(
+                              () => {
+                                setLike(false);
+                                setDislike(true);
+                                setGlobalModal(false);
+                                dispatch(
+                                  addLikedMovie({
+                                    movieID: imdbID,
+                                    like: false,
+                                    dislike: true,
+                                  })
+                                );
+                              }
+                            );
                           }
                         } else {
                           dispatch(showModal());

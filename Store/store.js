@@ -4,6 +4,7 @@ import MenuReducer from './MenuSlice'
 import MovieReducer from './MovieSlice'
 import ModalReducer from './ModalSlice'
 import SavedReducer from './SaveSlice'
+import LikeReducer from './LikedMovie'
 
 
 export const store = () => configureStore({   
@@ -11,7 +12,8 @@ export const store = () => configureStore({
         'menu':MenuReducer,
         'movie':MovieReducer,
         'modal':ModalReducer,
-        'saved':SavedReducer
+        'saved':SavedReducer,
+        'liked':LikeReducer
     },
 })
 

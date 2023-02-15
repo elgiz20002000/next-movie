@@ -10,6 +10,7 @@ import {getError, getLoading, getMovies } from "../Store/MovieSlice";
 import { useSession } from "next-auth/react";
 import { Container } from "reactstrap";
 import { getSavedMovies, setSavedMovies } from "../Store/SaveSlice";
+import { setLikedMovies } from "../Store/LikedMovie";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -36,8 +37,20 @@ export default function Home() {
         } else {
           dispatch(setSavedMovies([]))
         }
-      }
+      } 
   )}
+
+  if(session && session?.user) {
+    fetch('/api/like-movie/' + session.user.name)
+    .then(res => res.json())
+    .then(res => {
+      if(res.ok) {
+        dispatch(setLikedMovies(res.data.movies))
+      } else {
+        dispatch(setLikedMovies([]))
+      }
+    } 
+)}
   }, [session?.user])
 
 
